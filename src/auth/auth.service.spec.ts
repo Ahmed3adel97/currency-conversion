@@ -50,28 +50,29 @@ describe('authService', () => {
             jest.spyOn(jwtService, 'sign').mockReturnValue(token);
             const result = await authService.signUp(userObject);
 
-            expect(bcrypt.hash).toHaveBeenCalled();            
-            expect(result).toEqual({  ...mockedUser, token });
+            expect(bcrypt.hash).toHaveBeenCalled();
+            const expected = { mockedUser, token };
+            expect(result).toEqual({ user: mockedUser, token });
         })
     })
 
     describe('login', () => {
-        it('should login when passing the correct credetials', async() => {
+        it('should login when passing the correct credetials', async () => {
             jest.spyOn(bcrypt, 'compare').mockResolvedValueOnce(true);
             jest.spyOn(jwtService, 'sign').mockReturnValue(token);
             jest.spyOn(model, 'findOne').mockResolvedValueOnce(mockedUser);
             const result = await authService.login(userObject);
 
             expect(result).toEqual({ token });
-      
+
         })
-        it('should return wrong password response', async() => {
+        it('should return unauthorized exception when password response', async () => {
             jest.spyOn(bcrypt, 'compare').mockResolvedValueOnce(false);
             jest.spyOn(model, 'findOne').mockResolvedValueOnce(mockedUser);
 
             await expect(authService.login(userObject)).rejects.toThrow(
                 UnauthorizedException,
-              );
+            );
         })
     })
 })

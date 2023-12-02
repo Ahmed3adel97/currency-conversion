@@ -22,13 +22,14 @@ export class AuthService {
             throw new UnauthorizedException(`User with ${username} already registered`)
         }
         const hashedPassword = await bcrypt.hash(password, 10);
-        const newUser = await this.userModel.create({
+        const user = await this.userModel.create({
             username,
             password: hashedPassword,
         });
-        const token = this.jwtService.sign({ id: newUser._id });
+
+        const token = this.jwtService.sign({ id: user._id });
         return {
-            ...newUser, token
+            token, user 
         }
     }
     async login(userObject: AuthenticateDto): Promise<any> {

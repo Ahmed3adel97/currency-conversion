@@ -32,7 +32,7 @@ const mockTrasaction: any = {
   user: '61c0ccf11d7bf83d153d7c06'
 }
 
-const mockedtras = [
+const mockedtrasactions = [
   mockTrasaction
 ]
 beforeEach(async () => {
@@ -55,9 +55,9 @@ afterEach(() => {
 });
 describe('Get Transactions', () => {
   it('should get all transactions filtered by user Id', async () => {
-    jest.spyOn(model, 'find').mockResolvedValue(mockedtras);
+    jest.spyOn(model, 'find').mockResolvedValue(mockedtrasactions);
     const result = await transactionService.getTransactionHistory(mockUser);
-    expect(result).toEqual(mockedtras);
+    expect(result).toEqual(mockedtrasactions);
   })
 })
 
