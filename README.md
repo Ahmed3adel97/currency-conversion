@@ -5,6 +5,7 @@
 - Transactions are represented in the database woth four fields [`sourceCurrency`, `targetCurrency`, `amount`, `convertedAmount`]
 - Transaction is created when user convert from a currency into another currency
 - The User can view all his past transaction and login and register
+- **ExchangeRate-API** is used for converting the amount 
 - unit tests for all the services are covered
 - e2e tests are covered for all apis
 - database are deployed to atlas and you can access it by adding db link in the env file into mongo-compass
@@ -30,7 +31,7 @@ $ npm install
 ```
 
 ## Running the app
-
+- please note that node 18 is required to run the application locally
 ```bash
 # development
 $ npm run start
