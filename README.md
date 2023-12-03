@@ -51,3 +51,9 @@ $ npm run test
 $ npm run test:e2e
 
 ```
+
+## Deployment
+
+- This app is deployed with `Render` cloud provider as it's the only free deployment tool
+- link: <https://currency-coversion.onrender.com/>
+- swagger link for deployed Apis: <https://currency-coversion.onrender.com/api>
