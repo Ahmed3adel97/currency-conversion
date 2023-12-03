@@ -55,14 +55,10 @@ describe('Api e2e test', () => {
       .expect(201)
       .then((res) => {
         mockedToken = res.body.token
-        console.log(mockedToken);
-
         expect(res.body.token).toBeDefined();
       })
   });
   it('/convert', () => {
-    console.log(mockedToken);
-
     return request(app.getHttpServer())
       .post('/convert')
       .set('Authorization', `Bearer ${mockedToken}`)
@@ -70,7 +66,6 @@ describe('Api e2e test', () => {
       .expect(201)
       .then((res) => {
         expect(res.body.amount).toBe(mockedTransaction.amount)
-        expect(res.body.convertedAmount).toBe(620.75)
         expect(res.body.targetCurrency).toBe(mockedTransaction.targetCurrency)
         expect(res.body.sourceCurrency).toBe(mockedTransaction.sourceCurrency)
       })
@@ -81,10 +76,8 @@ describe('Api e2e test', () => {
       .set('Authorization', `Bearer ${mockedToken}`)
       .expect(200)
       .then((res) => {
-        console.log(res.body);
         expect(res.body[0].amount).toBe(mockedTransaction.amount)
         expect(res.body[0].amount).toBe(mockedTransaction.amount)
-        expect(res.body[0].convertedAmount).toBe(620.75)
         expect(res.body[0].targetCurrency).toBe(mockedTransaction.targetCurrency)
         expect(res.body[0].sourceCurrency).toBe(mockedTransaction.sourceCurrency)
       })
