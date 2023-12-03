@@ -6,11 +6,17 @@
 - Transaction is created when user convert from a currency into another currency
 - The User can view all his past transaction and login and register
 - unit tests for all the services are covered
+- e2e tests are covered for all apis
+- database are deployed to atlas and you can access it by adding db link in the env file into mongo-compass
 
 ## Design
 - In this project we have two main modules `Trasaction` and `Authentication`
 - Authentication module is responsable for authenticating the users and validate they are valid users, login and signup
 - Transation module is responsable for listing all user transactions and create new transaction
+
+## Documentation
+- full documentation of the apis are added using swgger
+- checking the apis swagger docs by running the application first then add this link into the chrome `http://localhost:3000/api`
 
 ## APIS
 - `/auth/signup`  : register new user with username and password
